@@ -236,7 +236,7 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
-  - react-native-encrypted-storage (4.0.4):
+  - react-native-encrypted-storage (4.0.5):
     - React-Core
   - React-RCTActionSheet (0.63.4):
     - React-Core/RCTActionSheetHeaders (= 0.63.4)
@@ -450,7 +450,7 @@ SPEC CHECKSUMS:
   React-jsi: df7455c330f8c1548225004fcc40031d4a7ade47
   React-jsiexecutor: f42871dfefc3a3ed2a0e62932f750e09b7ae6e19
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-encrypted-storage: 24d76e9f1415bb85c5b2c4826e7a3c0320e27dd1
+  react-native-encrypted-storage: 70905890f3e4e0eae114d643522215b10c53773a
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0
