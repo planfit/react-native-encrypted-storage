@@ -24,7 +24,7 @@ android {
   buildToolsVersion getExtOrDefault('buildToolsVersion')
 
   defaultConfig {
-    minSdkVersion 21
+    minSdkVersion 26
     targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
     versionCode 50
     versionName "4.0.3"
@@ -123,7 +123,7 @@ dependencies {
   implementation "androidx.security:security-crypto:1.1.0-alpha03"
 
   testImplementation 'junit:junit:4.13.2'
-  
+
   androidTestImplementation "androidx.test.ext:junit:1.2.1"
   //noinspection GradleDependency
   androidTestImplementation 'org.mockito:mockito-android:5.18.0'
