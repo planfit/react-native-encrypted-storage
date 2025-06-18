@@ -5,7 +5,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:8.2.0'
+    classpath 'com.android.tools.build:gradle:4.1.1'
   }
 }
 
@@ -126,6 +126,6 @@ dependencies {
 
   androidTestImplementation "androidx.test.ext:junit:1.2.1"
   //noinspection GradleDependency
-  androidTestImplementation 'org.mockito:mockito-android:5.18.0'
+  androidTestImplementation 'org.mockito:mockito-android:3.4.6'
   androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 }
