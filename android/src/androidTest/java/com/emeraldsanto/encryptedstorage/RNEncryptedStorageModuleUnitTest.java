@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(AndroidJUnit4.class)
 public class RNEncryptedStorageModuleUnitTest {
@@ -17,7 +18,9 @@ public class RNEncryptedStorageModuleUnitTest {
 
     @Before
     public void setUp() {
-        module = new RNEncryptedStorageModule(new ReactApplicationContext(InstrumentationRegistry.getInstrumentation().getTargetContext()));
+        ReactApplicationContext mockContext = mock(ReactApplicationContext.class);
+        when(mockContext.getApplicationContext()).thenReturn(InstrumentationRegistry.getInstrumentation().getTargetContext());
+        module = new RNEncryptedStorageModule(mockContext);
         module.clear(mock(Promise.class));
     }
 
@@ -80,8 +83,12 @@ public class RNEncryptedStorageModuleUnitTest {
         module.setItem("test", "asd", promise1);
         verify(promise1).resolve("asd");
 
-        module = new RNEncryptedStorageModule(new ReactApplicationContext(InstrumentationRegistry.getInstrumentation().getTargetContext()));
+        ReactApplicationContext mockContext = mock(ReactApplicationContext.class);
+        when(mockContext.getApplicationContext()).thenReturn(
+            InstrumentationRegistry.getInstrumentation().getTargetContext()
+        );
 
+        module = new RNEncryptedStorageModule(mockContext);
         Promise promise2 = mock(Promise.class);
         module.getItem("test", promise2);
         verify(promise2).resolve("asd");
