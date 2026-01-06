@@ -1,21 +1,36 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
-require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-platform :ios, '10.0'
+# Fix boost podspec checksum issue - must be done before CocoaPods reads the podspec
+boost_podspec_path = File.join(__dir__, '../node_modules/react-native/third-party-podspecs/boost.podspec')
+if File.exist?(boost_podspec_path)
+  boost_content = File.read(boost_podspec_path)
+  # Update checksum to match the actual downloaded file
+  boost_content.gsub!(
+    /:sha256 => '6478edfe2f3305127cffe8caf73ea0176c53769f4bf1585be237eb30798c3b8e'/,
+    ":sha256 => '1c162b579a423fa6876c6c5bc16d39ab4bc05e28898977a0a6af345f523f6357'"
+  )
+  File.write(boost_podspec_path, boost_content)
+end
+
+platform :ios, '15.1'
+
+prepare_react_native_project!
 
 target 'EncryptedStorageExample' do
   config = use_native_modules!
 
-  use_react_native!(:path => config["reactNativePath"])
+  react_native_path = config[:reactNativePath] || config["reactNativePath"] || File.expand_path('../node_modules/react-native', __dir__)
+  use_react_native!(
+    :path => react_native_path
+  )
 
   pod 'react-native-encrypted-storage', :path => '../..'
   
-  # Enables Flipper.
-  #
-  # Note that if you have use_frameworks! enabled, Flipper will not work and
-  # you should disable these next few lines.
-  use_flipper!
   post_install do |installer|
-    flipper_post_install(installer)
+    react_native_post_install(
+      installer,
+      react_native_path,
+      :mac_catalyst_enabled => false
+    )
   end
 end
